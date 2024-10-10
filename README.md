@@ -1,31 +1,7 @@
-# Trabajo Práctico Número 4
+# TSSE - Trabajo Práctico Nro 4
 
-## Uso del repositorio
+## Autor
 
-Este repositorio utiliza [pre-commit](https://pre-commit.com) para validaciones de formato. Para trabajar con el mismo usted debería tener instalado:
+Ing. Pablo E. Gimenez <<pegimenez@fi.uba.ar>>
 
-1. pre-commit (https://pre-commit.com/#install)
-
-Después de clonar el repositorio usted debería ejecutar el siguiente comando:
-
-```
-pre-commit install
-```
-
-Para generar la documentación del proyecto se utiliza el siguiente comando:
-
-```
-make doc
-
-```
-
-Para compilar el proyecto se utiliza el siguiente comando:
-
-```
-make all
-
-```
-
-## License
-
-This work is distributed under the terms of the [MIT](https://spdx.org/licenses/MIT.html) license.
+En este trabajo práctica se pone en uso los tests de leds desarrollados para el TP2 utilizando integración continua para la pre-validación del código.
