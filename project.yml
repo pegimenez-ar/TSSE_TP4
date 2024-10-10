@@ -1,4 +1,4 @@
----
+----
 
 # Notes:
 # Sample project C code is not presently written to produce a release artifact.
@@ -42,15 +42,10 @@
   :libraries: []
 
 :defines:
-  # in order to add common defines:
-  #  1) remove the trailing [] from the :common: section
-  #  2) add entries to the :common: section (e.g. :test: has TEST defined)
-  :common: &common_defines []
+  :common: []  # Directly use an empty list without defining an alias
   :test:
-    - *common_defines
     - TEST
   :test_preprocess:
-    - *common_defines
     - TEST
 
 :cmock:
@@ -73,9 +68,11 @@
 :gcov:
   :reports:
     - HtmlDetailed
+    - Cobertura
   :gcovr:
     :html_medium_threshold: 75
     :html_high_threshold: 90
+  :uncovered_ignore_list: [src/main.c, src/gpio.c]
 
 #:tools:
 # Ceedling defaults to using gcc for compiling, linking, etc.
@@ -100,4 +97,6 @@
   :enabled:
     - stdout_pretty_tests_report
     - module_generator
+    - gcov
+    - junit_tests_report
 ...
