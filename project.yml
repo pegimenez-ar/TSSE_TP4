@@ -1,5 +1,4 @@
 ---
-
 # Notes:
 # Sample project C code is not presently written to produce a release artifact.
 # As such, release build options are disabled.
@@ -10,7 +9,7 @@
   :use_test_preprocessor: TRUE
   :use_auxiliary_dependencies: TRUE
   :build_root: build
-#  :release_build: TRUE
+  #  :release_build: TRUE
   :test_file_prefix: test_
   :which_ceedling: gem
   :ceedling_version: 0.31.1
@@ -42,10 +41,15 @@
   :libraries: []
 
 :defines:
-  :common: []  # Directly use an empty list without defining an alias
+  # in order to add common defines:
+  #  1) remove the trailing [] from the :common: section
+  #  2) add entries to the :common: section (e.g. :test: has TEST defined)
+  :common: &common_defines []
   :test:
+    - *common_defines
     - TEST
   :test_preprocess:
+    - *common_defines
     - TEST
 
 :cmock:
@@ -56,11 +60,11 @@
     - :ignore
     - :callback
   :treat_as:
-    uint8:    HEX8
-    uint16:   HEX16
-    uint32:   UINT32
-    int8:     INT8
-    bool:     UINT8
+    uint8: HEX8
+    uint16: HEX16
+    uint32: UINT32
+    int8: INT8
+    bool: UINT8
 
 # Add -gcov to the plugins list to make sure of the gcov plugin
 # You will need to have gcov and gcovr both installed to make it work.
@@ -72,7 +76,7 @@
   :gcovr:
     :html_medium_threshold: 75
     :html_high_threshold: 90
-  :uncovered_ignore_list: [src/main.c, src/gpio.c]
+  :uncovered_ignore_list: [src/main.c]
 
 #:tools:
 # Ceedling defaults to using gcc for compiling, linking, etc.
@@ -87,7 +91,7 @@
   :placement: :end
   :flag: "-l${1}"
   :path_flag: "-L ${1}"
-  :system: []    # for example, you might list 'm' to grab the math library
+  :system: [] # for example, you might list 'm' to grab the math library
   :test: []
   :release: []
 
@@ -99,4 +103,3 @@
     - module_generator
     - gcov
     - junit_tests_report
-...
